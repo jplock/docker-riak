@@ -1,11 +1,13 @@
-# DOCKER-VERSION 0.5.3
-# VERSION        0.2
+# DOCKER-VERSION 0.6.1
+# VERSION        0.3
 
 FROM ubuntu
 MAINTAINER Justin Plock <jplock@gmail.com>
 
-RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
+RUN apt-get upgrade -y
+
 RUN apt-get -y -q install curl
 
 # Hack for initctl not being available in Ubuntu
